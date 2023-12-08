@@ -1,8 +1,7 @@
 <script>
   import _handleClickButton from "./+page.svelte"
 
-  let title = 'Titre du pop up';
-  let description = 'sa description';
+  let title = 'Choisissez votre batiment';
   let src = './assets/geothermique.png';
   let isPopupOpen = false;
 
@@ -41,14 +40,9 @@
   }
 </style>
 
-
-  <div on:click={closePopup} id=blur style="background-color : rgba(0, 0, 0, 30%);width:100%; height:100%; ">
-
-  </div>
-
   <div class="popup">
-    <h2>{title}</h2>
-    <p>{description}</p>
+    <h2>Choisissez votre batiment</h2>
+    <p>Test</p>
   </div>
 
   <!-- svelte-ignore empty-block -->
