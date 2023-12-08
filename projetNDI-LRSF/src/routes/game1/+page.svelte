@@ -1,6 +1,16 @@
 <script>
+    import buildings from "./database.js";
     import PopUp from "./PopUp.svelte";
+
+    let currentBuildingIndex = 0;
+    let currentBuilding = { ...buildings[currentBuildingIndex] };
+  
+    function getNextBuilding() {
+      currentBuildingIndex = (currentBuildingIndex + 1) % buildings.length;
+      currentBuilding = { ...buildings[currentBuildingIndex] };
+    }
 </script>
+
 <body>
     <div id="mainDiv">
         <PopUp/>
