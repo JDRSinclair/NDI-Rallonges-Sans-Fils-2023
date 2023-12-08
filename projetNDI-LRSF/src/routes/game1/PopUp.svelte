@@ -47,7 +47,6 @@
   }
 </style>
 
-<img class='drop-area' src='src\lib\images\geothermique.png'  alt="Description de l'image" on:drop={handleImageDrop} on:click={openPopup}/>
 
 
 {#if isPopupOpen}
