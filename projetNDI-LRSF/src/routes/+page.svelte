@@ -16,14 +16,20 @@
             settingsOpen = true;
         }
     }
+
+    function handleClickOutside(event) {
+        if (event.target === document.body) {
+            settingsOpen = false;
+        }
+    }
 </script>
 
-<body>
+<body on:click={handleClickOutside}>
     <div id="mainDiv">
         <h1>Menu du jeux</h1>
         <a href="/game1">Jeu 1</a>
         <a href="/game2">Jeu 2</a>
-        <a href="#" on:click={handleClickSettings}>Options</a>
+        <a href="#" on:click|stopPropagation={handleClickSettings}>Options</a>
         
         {#if settingsOpen}
             <Settings/>
