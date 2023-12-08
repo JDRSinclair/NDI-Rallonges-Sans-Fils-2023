@@ -16,7 +16,6 @@
             settingsOpen = true;
         }
     }
-
 </script>
 
 <body>

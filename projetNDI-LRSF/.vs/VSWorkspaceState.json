@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\routes",
+    "\\src\\routes\\game1",
+    "\\src\\routes\\game1\\assets",
+    "\\src\\routes\\game2"
+  ],
+  "SelectedNode": "\\src\\routes\\game1\\PopUp.svelte",
+  "PreviewInSolutionExplorer": false
+}
