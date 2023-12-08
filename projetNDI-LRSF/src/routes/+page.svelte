@@ -4,8 +4,7 @@
     let settingsOpen = false;
     let fieldTest;
 
-    function handleClickSettings()
-    {
+    function handleClickSettings() {
         console.log(settingsOpen);
         if(settingsOpen)
         {

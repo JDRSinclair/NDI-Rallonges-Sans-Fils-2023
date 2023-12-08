@@ -6,7 +6,8 @@
     let currentBuildingIndex = 0;
     let currentBuilding = { ...buildings[currentBuildingIndex] };
     let showPopup = false;
-    let tempsEcoule;
+    let minute;
+    let seconde;
 
     var bat1 = -1;
     var bat2 = -1;
@@ -20,32 +21,39 @@
 
     }
 
-    export function _handleClickButton(emplacement)
-    {
+    export function _handleClickButton(emplacement) {
         showPopup = !showPopup
     }
     
-    function start()
-    {
+    function start() {
         // Définir la durée totale du timer en millisecondes (5 minutes)
-        const dureeTotale = 5 * 60 * 1000; // 5 minutes en millisecondes
+        const dureeTotale = 5; // 5 minutes en millisecondes
 
         // Définir l'intervalle entre chaque étape du timer (1 seconde)
         const intervalle = 1000; // 1 seconde en millisecondes
 
         // Variable pour stocker le temps écoulé
-        tempsEcoule = 0;
+        minute = 0
+        seconde = 0;
 
         // Fonction appelée à chaque étape du timer
         function miseAJourTimer() {
             // Afficher le temps écoulé (peut être adapté selon vos besoins)
-            console.log(tempsEcoule + ' secondes écoulées');
+            console.log(minute * 60 + seconde + ' secondes écoulées');
         
             // Vérifier si le temps écoulé a atteint la durée totale
-            if (tempsEcoule < dureeTotale) {
+            if (minute < dureeTotale) {
                 // Incrémenter le temps écoulé
-                tempsEcoule += 1;
-            
+                if (seconde == 59)
+                {
+                    minute += 1;
+                    seconde = 0;
+                }
+                else
+                {
+                    seconde += 1;
+                }
+                
                 // Configurer la prochaine étape du timer
                 setTimeout(miseAJourTimer, intervalle);
             } else {
@@ -54,8 +62,8 @@
             }
         }
 
-// Lancer le timer en appelant la fonction pour la première fois
-miseAJourTimer();
+        // Lancer le timer en appelant la fonction pour la première fois
+        miseAJourTimer();
 
     }
 
@@ -89,7 +97,7 @@ miseAJourTimer();
         </div>
         
         <div class="ui" style="top:80%; left:0%">
-            <p>{tempsEcoule%}:{tempsEcoule%60}</p>
+            <p>{minute < 10 ? `0${minute}` : minute}:{seconde < 10 ? `0${seconde}` : seconde}</p>
             <p>Argent :</p> <progress value="50" max="100"></progress>
             <p>Polution : </p> <progress value="50" max="100"></progress>           
         </div>
