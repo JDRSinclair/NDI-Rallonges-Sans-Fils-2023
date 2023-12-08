@@ -30,27 +30,24 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #868686;
+    border-radius: 5%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 999;    
+    z-index: 999;
+    /* Désactivez le glisser-déposer pour le pop-up */
+    user-select: none;
   }
 
   .drop-area {
     width: 300px;
     height: 200px;
-    border: 2px dashed #ccc;
     text-align: center;
     padding: 20px;
   }
-
-  img {
-    cursor: pointer;
-    content: url("./assets/gaz.png");
-  }
 </style>
 
-<img alt="Description de l'image" on:click={openPopup} on:drop={handleImageDrop}/>
+<img class='drop-area' src='src\lib\images\geothermique.png'  alt="Description de l'image" on:drop={handleImageDrop} on:click={openPopup}/>
 
 
 {#if isPopupOpen}
