@@ -1,10 +1,12 @@
 <script>
+    import { onMount } from "svelte";
     import buildings from "./database.js";
     import PopUp from "./PopUp.svelte";
 
     let currentBuildingIndex = 0;
     let currentBuilding = { ...buildings[currentBuildingIndex] };
     let showPopup = false;
+    let tempsEcoule;
 
     var bat1 = -1;
     var bat2 = -1;
@@ -22,6 +24,42 @@
     {
         showPopup = !showPopup
     }
+    
+    function start()
+    {
+        // Définir la durée totale du timer en millisecondes (5 minutes)
+        const dureeTotale = 5 * 60 * 1000; // 5 minutes en millisecondes
+
+        // Définir l'intervalle entre chaque étape du timer (1 seconde)
+        const intervalle = 1000; // 1 seconde en millisecondes
+
+        // Variable pour stocker le temps écoulé
+        tempsEcoule = 0;
+
+        // Fonction appelée à chaque étape du timer
+        function miseAJourTimer() {
+            // Afficher le temps écoulé (peut être adapté selon vos besoins)
+            console.log(tempsEcoule + ' secondes écoulées');
+        
+            // Vérifier si le temps écoulé a atteint la durée totale
+            if (tempsEcoule < dureeTotale) {
+                // Incrémenter le temps écoulé
+                tempsEcoule += 1;
+            
+                // Configurer la prochaine étape du timer
+                setTimeout(miseAJourTimer, intervalle);
+            } else {
+                // Le timer a atteint la durée totale, vous pouvez exécuter une action ici
+                console.log('Le timer est terminé!');
+            }
+        }
+
+// Lancer le timer en appelant la fonction pour la première fois
+miseAJourTimer();
+
+    }
+
+    start();
   
 </script>
 
@@ -31,6 +69,7 @@
         <div on:click={() => _handleClickButton(1)} id=blur style="background-color : rgba(0, 0, 0, 30%);width:100%; height:100%;"/>
             <PopUp/>
         {/if}
+        
         <!-- svelte-ignore missing-declaration -->
         <div on:click={() => _handleClickButton(1)} class="positionDiv" id="place1" style="top:50%; left:5%">
             {#if bat1 != -1}<img style="width:100%; height:100%" src={bat1}  alt="Description de l'image"/>{/if}
@@ -49,7 +88,8 @@
             {#if bat5 != -1}<img style="width:100%; height:100%" src={bat5}  alt="Description de l'image"/>{/if}
         </div>
         
-        <div class="ui" style="top:85%; left:0%">
+        <div class="ui" style="top:80%; left:0%">
+            <p>{tempsEcoule%}:{tempsEcoule%60}</p>
             <p>Argent :</p> <progress value="50" max="100"></progress>
             <p>Polution : </p> <progress value="50" max="100"></progress>           
         </div>
@@ -57,6 +97,7 @@
 </body>
 
 <style>
+
     html, body {
     height: 100%;
     margin: 0;
@@ -88,10 +129,31 @@
     {
         background-color: rgba(200, 100, 20, 100%);
         border-radius: 5px;;
-        height: 15vh;
+        height: 20vh;
         width: 40vh;
         position: absolute;
-        cursor: pointer;
         padding: 10px;
+    }
+
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+
+    /* Style de la barre de progression remplie (background) */
+    progress::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 5px;
+    }
+
+    /* Style de la partie remplie de la barre de progression (foreground) */
+    progress::-webkit-progress-value {
+      background-color: #4CAF50; /* Vert */
+      border-radius: 5px;
+    }
+
+    /* Style du texte affiché à l'intérieur de la barre de progression */
+    progress::-webkit-progress-text {
+      color: #000; /* Noir */
     }
 </style>
