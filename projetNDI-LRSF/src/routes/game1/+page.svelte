@@ -97,7 +97,11 @@
         </div>
         
         <div class="ui" style="top:80%; left:0%">
+<<<<<<< Updated upstream
             <p>{minute < 10 ? `0${minute}` : minute}:{seconde < 10 ? `0${seconde}` : seconde}</p>
+=======
+            <p>{tempsEcoule}:{tempsEcoule%60}</p>
+>>>>>>> Stashed changes
             <p>Argent :</p> <progress value="50" max="100"></progress>
             <p>Polution : </p> <progress value="50" max="100"></progress>           
         </div>
