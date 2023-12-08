@@ -1,39 +1,42 @@
 <script>
-    import Settings from "./Settings.svelte";
+    import PopUp from "./Settings.svelte";
 
     let settingsOpen = false;
     let fieldTest;
 
-    function handleClickSettings()
-    {
-        console.log(settingsOpen);
-        if(settingsOpen)
-        {
-            settingsOpen = false;
-        }
-        else
-        {
-            settingsOpen = true;
-        }
-    }
-
-    function handleClickOutside(event) {
+    function handleClickButton(event) {
         if (event.target === document.body) {
             settingsOpen = false;
+        }
+        else {
+            settingsOpen = true;
         }
     }
 </script>
 
-<body on:click={handleClickOutside}>
+<body>
     <div id="mainDiv">
-        <h1>Green City</h1>
-        <a href="/game1">Jeu 1</a><br>
-        <a href="/game2">Jeu 2</a><br>
-        <a href="#" on:click={handleClickSettings}>Options</a>
-        
         {#if settingsOpen}
-            <Settings/>
-        {/if}  
+            <PopUp/>
+        {/if}
+        <!-- svelte-ignore missing-declaration -->
+        <div on:click={() => handleClickButton(1)} class="positionDiv" id="place1" style="top:50%; left:5%">
+            <img style="width:100%; height:100%" src='src\lib\images\geothermique.png'  alt="Description de l'image"/>
+        </div>
+        <div on:click={() => handleClickButton(2)} class="positionDiv" id="place2" style="top:45%; left:25%">
+
+        </div>
+        <div on:click={() => handleClickButton(3)} class="positionDiv" id="place3" style="top:70%; left:40%">
+
+        </div>
+        <div on:click={() => handleClickButton(4)} class="positionDiv" id="place4" style="top:40%; left:60%; width:17vh; height:17vh">
+
+        </div>
+        <!-- svelte-ignore missing-declaration -->
+        <div on:click={() => handleClickButton(5)} class="positionDiv" id="place5" style="top:45%; left:85%">
+
+        </div>
+        <!---->
     </div>
 </body>
 
