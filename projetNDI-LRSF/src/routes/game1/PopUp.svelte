@@ -1,16 +1,13 @@
 <script>
+  import _handleClickButton from "./+page.svelte"
+
   let title = 'Titre du pop up';
   let description = 'sa description';
   let src = './assets/geothermique.png';
   let isPopupOpen = false;
 
-  function openPopup() {
-    isPopupOpen = true;
-  }
-
   function closePopup() {
-    isPopupOpen = false;
-  }
+    }
 
   function handleKeyDown(event) {
     if (event.key === 'Escape') {
@@ -18,9 +15,6 @@
     }
   }
 
-  function handleImageDrop(event) {
-    event.preventDefault();
-  }
 </script>
 
 <style>
@@ -48,8 +42,10 @@
 </style>
 
 
+  <div on:click={closePopup} id=blur style="background-color : rgba(0, 0, 0, 30%);width:100%; height:100%; ">
 
-{#if isPopupOpen}
+  </div>
+
   <div class="popup">
     <h2>{title}</h2>
     <p>{description}</p>
@@ -57,4 +53,3 @@
 
   <!-- svelte-ignore empty-block -->
   {#await window.addEventListener('keydown', handleKeyDown)}{/await}
-{/if}

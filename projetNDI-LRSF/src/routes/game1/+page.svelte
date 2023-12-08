@@ -4,29 +4,42 @@
 
     let currentBuildingIndex = 0;
     let currentBuilding = { ...buildings[currentBuildingIndex] };
+    let showPopup = false;
   
     function getNextBuilding() {
       currentBuildingIndex = (currentBuildingIndex + 1) % buildings.length;
       currentBuilding = { ...buildings[currentBuildingIndex] };
+
     }
+
+    export function _handleClickButton(emplacement)
+    {
+        showPopup = !showPopup
+    }
+  
 </script>
 
 <body>
     <div id="mainDiv">
-        <PopUp/>
-        <div class="positionDiv" id="place1" style="top:50%; left:5%">
-            <img style="width:100%; height:100%" src='src\lib\images\geothermique.png'  alt="Description de l'image" on:drop={handleImageDrop} on:click={openPopup}/>
+        {#if showPopup}
+        <div on:click={() => _handleClickButton(1)} id=blur style="background-color : rgba(0, 0, 0, 30%);width:100%; height:100%;"/>
+            <PopUp/>
+        {/if}
+        <!-- svelte-ignore missing-declaration -->
+        <div on:click={() => _handleClickButton(1)} class="positionDiv" id="place1" style="top:50%; left:5%">
+            <img style="width:100%; height:100%" src='src\lib\images\geothermique.png'  alt="Description de l'image"/>
         </div>
-        <div class="positionDiv" id="place2" style="top:45%; left:25%">
+        <div on:click={() => _handleClickButton(2)} class="positionDiv" id="place2" style="top:45%; left:25%">
 
         </div>
-        <div class="positionDiv" id="place3" style="top:70%; left:40%">
+        <div on:click={() => _handleClickButton(3)} class="positionDiv" id="place3" style="top:70%; left:40%">
 
         </div>
-        <div class="positionDiv" id="place4" style="top:40%; left:60%; width:17vh; height:17vh">
+        <div on:click={() => _handleClickButton(4)} class="positionDiv" id="place4" style="top:40%; left:60%; width:17vh; height:17vh">
 
         </div>
-        <div class="positionDiv" id="place5" style="top:45%; left:85%">
+        <!-- svelte-ignore missing-declaration -->
+        <div on:click={() => _handleClickButton(5)} class="positionDiv" id="place5" style="top:45%; left:85%">
 
         </div>
         <!---->
